@@ -31,9 +31,9 @@ function RegisterPage() {
       <h1 className="text-center text-primary text-4xl mb-4">Register</h1>
       {userCreated && (
         <div className="my-4 text-center">
-          User created. Now you can{" "}
+          User created. Now you can
           <Link className="underline" href={"/login"}>
-            Login &raquo;{" "}
+            Login
           </Link>
         </div>
       )}
@@ -75,7 +75,7 @@ function RegisterPage() {
         <div className="text-center my-4 text-gray-500 border-t pt-4">
           Existing account?{" "}
           <Link className="underline" href={"/login"}>
-            Login here &raquo;
+            Login here
           </Link>
         </div>
       </form>
