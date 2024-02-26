@@ -41,6 +41,7 @@ function LoginPage() {
           or Login with provider
         </div>
         <button
+          onClick={() => signIn("google", { callbackUrl: "/" })}
           className="flex gap-4 justify-center
           max-w-xs mx-auto"
           disabled={loginInProgress}

@@ -3,10 +3,16 @@ import { User } from "@/app/models/User";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
+import GoogleProvider from "next-auth/providers/google";
+import "dotenv/config";
 
 const handler = NextAuth({
   secret: process.env.SECRET,
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
     CredentialsProvider({
       name: "Credentials",
       id: "credentials",
@@ -26,9 +32,8 @@ const handler = NextAuth({
         );
         const user = await User.findOne({ email });
         const passwordOk = user && bcrypt.compareSync(password, user.password);
-        console.log(passwordOk);
+
         if (passwordOk) {
-          console.log(user);
           return user;
         }
         return null;
